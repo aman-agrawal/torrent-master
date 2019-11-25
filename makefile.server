@@ -1,0 +1,13 @@
+CC=g++
+
+CFLAGS = -Wall -std=c++1z
+
+DEPS = torrent_utils.h mtorrent_file.h
+
+OBJ = mtorrent_file.o torrent_utils.o -lcrypto tracker.o -lpthread
+
+%.o: %.cpp ($DEPS)
+		$(CC) $(CFLAGS) -c -o $@ $< 
+
+server : $(OBJ)
+		$(CC) $(CFLAGS) -o $@ $^

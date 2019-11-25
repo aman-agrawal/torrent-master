@@ -1,0 +1,59 @@
+/*******************************************************************/
+            How to compile the application ?
+/*******************************************************************/
+
+1. There are 2 make files for compiling server and client files.
+a) makefile.server
+b) makefile.client
+
+2. Server files can be compiled by command :
+make -f makefile.server
+
+3. Client files can be compiled by command :
+make -f makefile.client
+
+
+/*******************************************************************/
+            How to run the application ?
+/*******************************************************************/
+
+1. Server (tracker) will run as :
+
+./server <TRACKER_IP_1>:<TRACKER_PORT_1> <TRACKER_IP_2>:<TRACKER_PORT_2> <seeder_file> <log_file>
+e.g. : ./server 127.0.0.1:8080 127.0.0.1:8080 seeders.txt log_file_server.txt
+
+2. Client (peer) will run as :
+
+./client <CLIENT_IP>:<UPLOAD_PORT> <TRACKER_IP_1>:<TRACKER_PORT_1> <TRACKER_IP_2>:<TRACKER_PORT_2> <log_file>
+e.g : ./client 127.0.0.1:8085 127.0.0.1:8080 127.0.0.1:8080 log_file_client_8085.txt
+
+3. Tracker should be up for sharing as well as for getting (downloading) the file.
+
+4. File name of the file to be shared or downloaded should be absoulute path of the file, file name can be
+	directly accepted, if file is in the same directory where executable file resides.
+
+5. Log file name should be absoulute path of the file, file name can be directly accepted,
+	if file is in the same directory where executable file resides.
+
+
+/*******************************************************************/
+            How to share and download ?
+/*******************************************************************/
+
+1. Share the file : client can share files with other peers
+
+Syntax : share <file_path> <mtorrent_file_name>
+
+e.g. : share dir1/3.png 3.mtorrent
+e.g. : share /home/aman/Desktop/Sem1/OS/Assignment/torrent-master/aman.txt aman.mtorrent
+
+A message to user, "File shared with trackers!", will confirm that file has shared.
+
+2. Get the file : client can download the files from peers
+
+Syntax : get <mtorrent_file_name> <directory_path>
+
+e.g. : get 3.mtorrent dir2
+e.g. : get aman.mtorrent /home/aman/Desktop
+
+A message to user, "File downloaded!", will confirm that file has downloaded.
